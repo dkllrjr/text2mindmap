@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_HOST=mindmap.alaskanresearcher.dev
+      - LETSENCRYPT_HOST=mindmap.alaskanresearcher.dev
+
+networks:
+  default:
+    external:
+      name: nginx_default
